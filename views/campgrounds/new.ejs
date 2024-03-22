@@ -1,0 +1,66 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="row">
+    <h1 class="text-center mb-3">New Campground</h1>
+    <div class="col-6 offset-3">
+        <form action="/campgrounds" method="post" novalidate class="needs-validation" enctype="multipart/form-data"> <%# urlencoded se hata ke ye kiya for image upload %>
+            <div class="form-floating mb-3">
+                <input class="form-control" type="text" name="campground[title]" id="title" placeholder="title" required>
+                <label class="form-label" for="title">Title</label>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id=" location" name="campground[location]" placeholder="location" required>
+                <label class="form-label" for="location">Location</label>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <input type="file" name="image" class="btn btn-secondary" multiple>
+            <!-- <div class="form-floating mb-3">
+                <input type="text" class="form-control" id=" image" name="campground[image]" placeholder="image" required>
+                <label class="form-label" for="image">Image Url</label>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div> -->
+            
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="price-label">₹</span>
+                <input type="number" class="form-control" placeholder="Price" name="campground[price]" aria-label="price" aria-describedby="price-label" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            
+            <div class="form-floating mb-3">
+                <textarea class="form-control" placeholder="Leave a comment here" id="description" name="campground[description]" required></textarea>
+                <label for="description">Description</label>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+        
+            <button class="btn btn-success mb-3">Add campground</button>
+            <!--name = campground[title] karne se sab kuch campground ke andar link ho gya array jaisa use kar sakte hai ab-->
+            <div>
+                <a href="/campgrounds">All campgrounds</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- validation ki js boilerplate me likhi hai -->
+
+<script>
+    // const textarea = document.getElementById('description');
+    // textarea.addEventListener('input', () => {
+    //     textarea.style.height = 'auto'; // reset karne ke liye (css ko overwrite karne ke liye)
+    //     // textarea.style.overflow = 'hidden'
+    //     textarea.style.height = (textarea.scrollHeight+50) + 'px';
+    // });
+</script>

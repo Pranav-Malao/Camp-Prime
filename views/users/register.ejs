@@ -1,0 +1,27 @@
+<% layout('layouts/boilerplate') %>
+<h1>Register</h1>
+
+<form action="/register" class="needs-validation" method="post" novalidate autocomplete="on">
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+        <label class="form-label" for="username">Username</label>
+        <div class="valid-feedback">
+            Looks good!
+        </div>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="Email" name="email" placeholder="Email" required>
+        <label class="form-label" for="Email">Email</label>
+        <div class="valid-feedback">
+            Looks good!
+        </div>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="password" class="form-control" id="Password" name="password" placeholder="Password" required>
+        <label class="form-label" for="Password">Password</label>
+        <div class="valid-feedback">
+            Looks good!
+        </div>
+    </div>
+    <button class="btn btn-success">Submit</button>
+</form>
