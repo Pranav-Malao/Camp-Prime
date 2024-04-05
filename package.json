@@ -1,7 +1,7 @@
 {
-  "name": "yelpcamp",
+  "name": "campprime",
   "version": "1.0.0",
-  "description": "Our major project - The Yelp Camp",
+  "description": "Our major project - The CampPrime",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,12 +11,12 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Pranav-Malao/YelpCamp.git"
+    "url": "git+https://github.com/Pranav-Malao/Camp-Prime.git"
   },
   "bugs": {
-    "url": "https://github.com/Pranav-Malao/YelpCamp/issues"
+    "url": "https://github.com/Pranav-Malao/CampPrime/issues"
   },
-  "homepage": "https://github.com/Pranav-Malao/YelpCamp#readme",
+  "homepage": "https://github.com/Pranav-Malao/Camp-Prime#readme",
   "dependencies": {
     "cloudinary": "^1.41.3",
     "connect-flash": "^0.1.1",
