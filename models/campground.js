@@ -1,14 +1,18 @@
 const mongoose = require('mongoose');
 const review = require('./review');
 
+const imageSchema = new mongoose.Schema({
+    url: String,
+    filename: String
+});
+
+imageSchema.virtual('thumbnail').get(function () {
+    return this.url.replace('/upload', '/upload/w_200');
+});
+
 const CampgroundSchema = new mongoose.Schema({
     title: String,
-    images: [
-        {
-            url: String,
-            filename: String
-        }
-    ],
+    images: [imageSchema],
     price: Number,
     description: String,
     location: String,
@@ -24,13 +28,13 @@ const CampgroundSchema = new mongoose.Schema({
     ]
 });
 
-//if a camp deleted then delete all reviews associated to it
-CampgroundSchema.post('findOneAndDelete', async function (doc) { // mongoose query middleware, ye chalega jab findOneAndDelete ye query hit hogi
+
+CampgroundSchema.post('findOneAndDelete', async function (doc) {
     if (doc) {
         await review.deleteMany({
-            _id: {$in: doc.reviews}
+            _id: { $in: doc.reviews }
         })
-    } // uss doc ko lo jo delete hua, aur reviews me se deleteMany kar do unko jinki _id doc.reviews me thi
+    }
 
 })
 

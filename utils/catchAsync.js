@@ -1,6 +1,6 @@
-function wrapAsync (fn) { // ye bas fn leta hai aur use try-catch se wrap karke deta hai
+function wrapAsync (fn) {
     return (req, res, next) => {
-        fn(req, res, next).catch(next); // same as .catch(error => next(error));
+        fn(req, res, next).catch(next);
     }
 }
 

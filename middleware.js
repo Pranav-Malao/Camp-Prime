@@ -19,14 +19,11 @@ module.exports.storeReturnTo = (req, res, next) => {
         res.locals.returnTo = req.session.returnTo;
     }
     next();
-    // console.log(req.session.returnTo, res.locals.returnTo);
-} // jaise apan bina login ke chalarahe app, aur appanne newcamp page khola toh vo login pe redirect hoga, phir login ke baad sab(session) reset ho jata hai. Lekin apan ko newcamp pe aana chahiye tha (for good UX), so apan original URL ko save kar lenge before hand and phir login ke baad vaha redirect kar denge.
-// req.session.returnTo variable me url hai par refresh ke baad chala jata hai so use this middleware for saving it to req.locals.returnTo
-// actually locals clear ho jata hai har req-res cycle ke baad, so pehle value session me thi, phir session clear hone par locals me dali kyuki 2 instructions ho rahe hai. Direct locals me dala toh gayab ho jayegi value.
+    
+}
 
-
-module.exports.validateCampground = (req, res, next) => { // server side validation of campground middleware
-    const { error } = campgroundValidateSchema.validate(req.body); //campgroundValidateSchema imported hai (Joi stuff)
+module.exports.validateCampground = (req, res, next) => {
+    const { error } = campgroundValidateSchema.validate(req.body);
     if (error) {
         const msg = error.details.map(el => el.message).join(',');
         throw new ExpressError(msg, 400);
@@ -55,8 +52,8 @@ module.exports.isReviewAuthor = async (req, res, next) => {
     next();
 }
 
-module.exports.validateReview = (req, res, next) => { // server side validation of review middleware
-    const { error } = reviewsValidateSchema.validate(req.body); //reviewValidateSchema imported hai (Joi se validate kiya)
+module.exports.validateReview = (req, res, next) => {
+    const { error } = reviewsValidateSchema.validate(req.body);
     if (error) {
         const msg = error.details.map(el => el.message).join(',');
         throw new ExpressError(msg, 400);

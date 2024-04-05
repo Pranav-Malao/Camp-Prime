@@ -4,8 +4,8 @@ const wrapAsync = require('../utils/catchAsync');
 const campgrounds = require('../controllers/campgrounds');
 const { isLoggedIn, isAuthor, validateCampground } = require('../middleware');
 const multer = require('multer');
-const { storage } = require('../cloudinary'); // index.js khud hi leta hai nodejs
-const upload = multer({ storage }) // multer is used to parse the multipart/formdata it has req.BODY obj for normal data (form body) and req.FILE for uploaded files
+const { storage } = require('../cloudinary');
+const upload = multer({ storage }) 
 
 
 router.get('/', (req, res) => {

@@ -9,9 +9,9 @@ const userSchema = new mongoose.Schema({
     }
 });
 
-userSchema.plugin(passportLocalMongoose);  // ye username, hash, salt add kar dega
+userSchema.plugin(passportLocalMongoose);
 
-userSchema.post('save', function (error, doc, next) { // unique: true se hua hai shayad
+userSchema.post('save', function (error, doc, next) {
     if (error.name === 'MongoServerError' && error.code === 11000 && error.keyValue.email) {
         next(new Error('Email address was already taken, please choose a different one.'));
     } else {

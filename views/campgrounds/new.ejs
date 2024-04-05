@@ -3,7 +3,7 @@
 <div class="row">
     <h1 class="text-center mb-3">New Campground</h1>
     <div class="col-6 offset-3">
-        <form action="/campgrounds" method="post" novalidate class="needs-validation" enctype="multipart/form-data"> <%# urlencoded se hata ke ye kiya for image upload %>
+        <form action="/campgrounds" method="post" novalidate class="needs-validation" enctype="multipart/form-data">
             <div class="form-floating mb-3">
                 <input class="form-control" type="text" name="campground[title]" id="title" placeholder="title" required>
                 <label class="form-label" for="title">Title</label>
@@ -19,14 +19,10 @@
                 </div>
             </div>
 
-            <input type="file" name="image" class="btn btn-secondary" multiple>
-            <!-- <div class="form-floating mb-3">
-                <input type="text" class="form-control" id=" image" name="campground[image]" placeholder="image" required>
-                <label class="form-label" for="image">Image Url</label>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-            </div> -->
+            <div class="input-group mb-3">
+                <input type="file" class="form-control" id="image" name="image" multiple>
+                <label class="input-group-text" for="image">Add Images</label>
+            </div>
             
             <div class="input-group mb-3">
                 <span class="input-group-text" id="price-label">₹</span>
@@ -44,12 +40,8 @@
                 </div>
             </div>
 
-        
             <button class="btn btn-success mb-3">Add campground</button>
             <!--name = campground[title] karne se sab kuch campground ke andar link ho gya array jaisa use kar sakte hai ab-->
-            <div>
-                <a href="/campgrounds">All campgrounds</a>
-            </div>
         </form>
     </div>
 </div>

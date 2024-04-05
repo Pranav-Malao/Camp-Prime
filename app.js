@@ -3,20 +3,20 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 const express = require('express');
-const path = require('path'); // har jagah se access karne ke liye
+const path = require('path'); 
 const mongoose = require('mongoose');
-const methodOverride = require('method-override'); // for put, delete request
-const ejsMate = require('ejs-mate');  // for boilerplate
+const methodOverride = require('method-override'); 
+const ejsMate = require('ejs-mate');  
 const ExpressError = require('./utils/ExpressErrors');
 const session = require('express-session');
 const flash = require('connect-flash');
 
-const passport = require('passport'); // passport ke 3 chize
-const localStrategy = require('passport-local'); // iski jagah google ka bhi le sakte
+const passport = require('passport'); 
+const localStrategy = require('passport-local'); 
 const User = require('./models/user');
 
 const userRoutes = require('./routes/user');
-const campgroundRoutes = require('./routes/campground'); // campground routes
+const campgroundRoutes = require('./routes/campground');
 const reviewRoutes = require('./routes/review');
 
 const app = express();
@@ -27,8 +27,8 @@ mongoose.connection.once('open', () => {
     console.log("Database connected");
 });
 
-app.use(express.urlencoded({ extended: true }));  // for parsing form data
-app.use(methodOverride('_method'));  // for put, delete request
+app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 const sessionConfig = {
@@ -44,11 +44,10 @@ const sessionConfig = {
 app.use(session(sessionConfig));
 app.use(flash());
 
-app.use(passport.initialize());  // passport ki 5 chize
+app.use(passport.initialize());
 app.use(passport.session());
-passport.use(new localStrategy(User.authenticate())); // hey passport use the local strategy that we imported and uss localstrategy ke liye authentication method locate hogi User model me,
-// lekin apanne toh banayi nahi, actually vo plugin ne di hai
-passport.serializeUser(User.serializeUser()); // user ko store karna session me
+passport.use(new localStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
@@ -58,13 +57,13 @@ app.use((req, res, next) => {
     next();
 });
 
-app.engine('ejs', ejsMate); // for boilerplate
-app.set('view engine', 'ejs'); // ejs
+app.engine('ejs', ejsMate);
+app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 app.use('/', userRoutes);
-app.use('/', campgroundRoutes); // campgroud routes running
-app.use('/campgrounds/:id/reviews', reviewRoutes); //review routes running
+app.use('/', campgroundRoutes); 
+app.use('/campgrounds/:id/reviews', reviewRoutes); 
 
 app.all('*', (req, res, next) => {
     next(new ExpressError('Page Not Found', 404));

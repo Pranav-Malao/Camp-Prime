@@ -1,4 +1,4 @@
-<% layout('layouts/boilerplate') %> <!--isse inject hoga boilerplate me-->
+<% layout('layouts/boilerplate') %>
 <link rel="stylesheet" href="/stylesheets/stars.css">
 
 <div class="row">
@@ -7,7 +7,7 @@
         <div class="carousel-inner">
           <% campground.images.forEach((img, index) => { %>
           <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
-            <img src="<%= img.url %>" class="d-block w-100" alt="">
+            <img src="<%= img.url %>" class="rounded d-block w-100" alt="">
           </div>
           <% }) %>
         </div>
