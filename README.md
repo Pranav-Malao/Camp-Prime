@@ -2,6 +2,8 @@
 
 CampPrime is a web application designed to facilitate campground management and sharing experiences among users. With CampPrime, users can add, modify, and delete campgrounds, upload images, provide descriptions, set rental prices, and interact with other users through reviews and ratings.
 
+![CampPrime Logo](https://github.com/Pranav-Malao/Camp-Prime/utils/main.jpeg)
+
 ## Features
 
 - **Campground Management**: Users can add new campgrounds, modify existing ones, or delete them.
