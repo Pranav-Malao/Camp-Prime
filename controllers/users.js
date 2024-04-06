@@ -13,7 +13,7 @@ module.exports.registerUser = async (req, res, next) => {
             if (err) {
                 return next(err);
             }
-            req.flash('success', 'Welcome to yelpCamp !!');
+            req.flash('success', 'Welcome to CampPrime !!');
             res.redirect('/campgrounds');
         });
     } catch (error) {
